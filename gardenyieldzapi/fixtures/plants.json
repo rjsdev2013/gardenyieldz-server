@@ -1,0 +1,29 @@
+[
+    {
+        "model": "gardenyieldzapi.plant",
+        "pk": 1,
+        "fields": {
+            "name": "Cucumber",
+            "description": "A happy, gourd-eous fruit",
+            "plant_date": 4
+        }
+    },
+    {
+        "model": "gardenyieldzapi.plant",
+        "pk": 2,
+        "fields": {
+            "name": "Watermelon",
+            "description": "best late summer snack",
+            "plant_date": 4
+        }
+    },
+    {
+        "model": "gardenyieldzapi.plant",
+        "pk": 3,
+        "fields": {
+            "name": "arugula",
+            "description": "spicy leafy green",
+            "plant_date": 4
+        }
+    }
+]

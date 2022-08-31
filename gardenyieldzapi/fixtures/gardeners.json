@@ -1,0 +1,10 @@
+[
+    {
+        "model": "gardenyieldzapi.gardener",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "bio": "Me"
+        }
+    }
+]
