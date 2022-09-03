@@ -19,7 +19,7 @@ class JournalView(ViewSet):
 
     def list(self, request):
         journals = Journal.objects.all()
-        serializer = PlantSerializer(journals, many=True)
+        serializer = JournalSerializer(journals, many=True)
         return Response(serializer.data)
         
     def create(self, request):
