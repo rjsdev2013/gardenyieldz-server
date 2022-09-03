@@ -49,3 +49,23 @@ def create(self, request):
     )
     serializer = JournalSerializer(journal)
     return Response(serializer.data)
+
+# 8/30 added journalView create function;initiated git;next is edit and then delete(ch10)
+
+def update(self, request, pk):
+    """Handle PUT requests for a game
+
+    Returns:
+        Response -- Empty body with 204 status code
+    """
+
+    journal = Journal.objects.get(pk=pk)
+    journal.date = request.data["date"]
+    journal.fruitNumber = request.data["fruitNumber"]
+    journal.weight = request.data["weight"]
+    journal.plant_id = request.data["plant_id"]
+    journal.gardener_id = request.data["gardener_id"]
+
+    journal.save()
+
+    return Response(None, status=status.HTTP_204_NO_CONTENT)
