@@ -9,7 +9,7 @@ from gardenyieldzapi.models.plant import Plant
 
 
 class JournalView(ViewSet):
-    """Level up game types view"""
+    """Journals view"""
 
     def retrieve(self, request, pk):
         journal = Journal.objects.get(pk=pk)
@@ -38,8 +38,8 @@ class JournalView(ViewSet):
         journal.date = request.data["date"]
         journal.fruitNumber = request.data["fruitNumber"]
         journal.weight = request.data["weight"]
-        journal.plant_id = request.data["plant_id"]
-        journal.gardener_id = request.data["gardener_id"]
+        journal.plant_id = request.data["plant"]
+        journal.gardener_id = request.data["gardener"]
 
         journal.save()
 
@@ -55,7 +55,7 @@ class JournalSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Journal
-        fields = ('id', 'date', 'fruitNumber', 'weight','plant_id','gardener_id')
+        fields = ('id', 'date', 'fruitNumber', 'weight','plant','gardener')
         depth = 1
         
 class CreateJournalSerializer (serializers.ModelSerializer):
@@ -66,6 +66,6 @@ class CreateJournalSerializer (serializers.ModelSerializer):
             'date',
             'fruitNumber',
             'weight',
-            'plant_id',
-            'gardener_id'   
+            'plant',
+            'gardener'   
         )
