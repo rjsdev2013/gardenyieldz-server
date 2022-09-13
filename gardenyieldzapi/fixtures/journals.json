@@ -1,0 +1,12 @@
+[
+    {
+     "model": "gardenyieldzapi.journal",
+     "pk": 1,
+     "fields": {
+         "fruitNumber": 10,
+         "weight": 16,
+         "plant_id": 1,
+         "gardener_id": 1
+     }
+    }
+]
