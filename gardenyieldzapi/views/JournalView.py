@@ -25,21 +25,25 @@ class JournalView(ViewSet):
     def create(self, request):
         gardener = Gardener.objects.get(user=request.auth.user)
         plant_id = Plant.objects.get(pk=request.data["plant_id"])
+        
     
-        journal = Journal.objects.get(user=request.auth.user)
-        serializer = CreateJournalSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(journal=journal)
+        journal = Journal.objects.create(
+            gardener = gardener,
+            plant = plant_id,
+            weight = request.data["weight"],
+            fruitNumber = request.data["fruitNumber"]
+        )
+        
+        serializer = CreateJournalSerializer(journal)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
         """Handle PUT requests for a game"""
         journal = Journal.objects.get(pk=pk)
-        journal.date = request.data["date"]
         journal.fruitNumber = request.data["fruitNumber"]
         journal.weight = request.data["weight"]
-        journal.plant_id = request.data["plant"]
-        journal.gardener_id = request.data["gardener"]
+        journal.plant_id = request.data["plant_id"]
+        journal.gardener_id = request.data["gardener_id"]
 
         journal.save()
 
@@ -63,7 +67,6 @@ class CreateJournalSerializer (serializers.ModelSerializer):
         model = Journal
         fields = (
             'id',
-            'date',
             'fruitNumber',
             'weight',
             'plant',
